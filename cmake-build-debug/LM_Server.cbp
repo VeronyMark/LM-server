@@ -4,82 +4,132 @@
 	<Project>
 		<Option title="LM_Server"/>
 		<Option makefile_is_custom="1"/>
-		<Option compiler="gcc"/>
+		<Option compiler="msvc8"/>
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/tmp/tmp.HC5flTwMwF/cmake-build-debug"/>
+				<Option working_dir="C:/Users/marek/Desktop/LM-server/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="rebuild_cache">
-				<Option working_dir="/tmp/tmp.HC5flTwMwF/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="edit_cache">
-				<Option working_dir="/tmp/tmp.HC5flTwMwF/cmake-build-debug"/>
-				<Option type="4"/>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 all"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LM_Server">
-				<Option output="/tmp/tmp.HC5flTwMwF/cmake-build-debug/LM_Server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.HC5flTwMwF/cmake-build-debug"/>
+				<Option output="C:/Users/marek/Desktop/LM-server/cmake-build-debug/LM_Server.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/marek/Desktop/LM-server/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="C:/Users/marek/Desktop/LM-server/."/>
+					<Add directory="C:/Users/marek/Desktop/LM-server/pos_sockets"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 LM_Server"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 LM_Server"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="LM_Server/fast">
-				<Option output="/tmp/tmp.HC5flTwMwF/cmake-build-debug/LM_Server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.HC5flTwMwF/cmake-build-debug"/>
+				<Option output="C:/Users/marek/Desktop/LM-server/cmake-build-debug/LM_Server.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Users/marek/Desktop/LM-server/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
-				<Option compiler="gcc"/>
+				<Option compiler="msvc8"/>
 				<Compiler>
-					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/x86_64-linux-gnu"/>
-					<Add directory="/usr/include"/>
+					<Add directory="C:/Users/marek/Desktop/LM-server/."/>
+					<Add directory="C:/Users/marek/Desktop/LM-server/pos_sockets"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.36.32532\ATLMFC\include"/>
+					<Add directory="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\VS\include"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\include\10.0.22000.0\ucrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\um"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\shared"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\winrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\10\\include\10.0.22000.0\\cppwinrt"/>
+					<Add directory="C:\Program Files (x86)\Windows Kits\NETFXSDK\4.8\include\um"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 LM_Server/fast"/>
-					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j4 -f &quot;/tmp/tmp.HC5flTwMwF/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 LM_Server/fast"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="C:/Users/marek/Desktop/LM-server/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 edit_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="C:/Users/marek/Desktop/LM-server/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
+					<DistClean command="nmake /NOLOGO /f C:\Users\marek\Desktop\LM-server\cmake-build-debug\Makefile VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.HC5flTwMwF/main.c">
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Mravec.c">
 			<Option target="LM_Server"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.HC5flTwMwF/CMakeLists.txt">
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Mravec.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Pole.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Pole.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/buffer.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/main.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/active_socket.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/active_socket.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/char_buffer.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/char_buffer.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/linked_list.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/passive_socket.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/pos_sockets/passive_socket.h">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

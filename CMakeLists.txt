@@ -7,7 +7,8 @@ include_directories(.)
 include_directories(pos_sockets)
 
 
-add_executable(LM_Server
+add_executable(
+        LM_Server
         pos_sockets/active_socket.c
         pos_sockets/active_socket.h
         pos_sockets/char_buffer.c
@@ -16,6 +17,10 @@ add_executable(LM_Server
         pos_sockets/passive_socket.c
         pos_sockets/passive_socket.h
         buffer.h
-        main.c)
+        main.c
+        LM_logika/Mravec.h
+        LM_logika/Mravec.c
+        LM_logika/Pole.h
+        LM_logika/Pole.c)
 
 target_link_libraries(LM_Server pthread)
