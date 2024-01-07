@@ -178,6 +178,26 @@ CMakeFiles\LM_Server.dir\LM_logika\Pole.c.s: cmake_force
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\LM_Server.dir\LM_logika\Pole.c.s /c C:\Users\marek\Desktop\LM-server\LM_logika\Pole.c
 <<
 
+CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj: CMakeFiles\LM_Server.dir\flags.make
+CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj: C:\Users\marek\Desktop\LM-server\LM_logika\Plocha.c
+CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj: CMakeFiles\LM_Server.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\marek\Desktop\LM-server\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/LM_Server.dir/LM_logika/Plocha.c.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj.d --working-dir=C:\Users\marek\Desktop\LM-server\cmake-build-debug --filter-prefix="Note: including file: " -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1436~1.325\bin\Hostx64\x64\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj /FdCMakeFiles\LM_Server.dir\ /FS -c C:\Users\marek\Desktop\LM-server\LM_logika\Plocha.c
+<<
+
+CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/LM_Server.dir/LM_logika/Plocha.c.i"
+	C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1436~1.325\bin\Hostx64\x64\cl.exe > CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.i @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\marek\Desktop\LM-server\LM_logika\Plocha.c
+<<
+
+CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/LM_Server.dir/LM_logika/Plocha.c.s"
+	C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1436~1.325\bin\Hostx64\x64\cl.exe @<<
+ /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /FoNUL /FAs /FaCMakeFiles\LM_Server.dir\LM_logika\Plocha.c.s /c C:\Users\marek\Desktop\LM-server\LM_logika\Plocha.c
+<<
+
 # Object files for target LM_Server
 LM_Server_OBJECTS = \
 "CMakeFiles\LM_Server.dir\pos_sockets\active_socket.c.obj" \
@@ -185,7 +205,8 @@ LM_Server_OBJECTS = \
 "CMakeFiles\LM_Server.dir\pos_sockets\passive_socket.c.obj" \
 "CMakeFiles\LM_Server.dir\main.c.obj" \
 "CMakeFiles\LM_Server.dir\LM_logika\Mravec.c.obj" \
-"CMakeFiles\LM_Server.dir\LM_logika\Pole.c.obj"
+"CMakeFiles\LM_Server.dir\LM_logika\Pole.c.obj" \
+"CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj"
 
 # External object files for target LM_Server
 LM_Server_EXTERNAL_OBJECTS =
@@ -196,9 +217,10 @@ LM_Server.exe: CMakeFiles\LM_Server.dir\pos_sockets\passive_socket.c.obj
 LM_Server.exe: CMakeFiles\LM_Server.dir\main.c.obj
 LM_Server.exe: CMakeFiles\LM_Server.dir\LM_logika\Mravec.c.obj
 LM_Server.exe: CMakeFiles\LM_Server.dir\LM_logika\Pole.c.obj
+LM_Server.exe: CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj
 LM_Server.exe: CMakeFiles\LM_Server.dir\build.make
 LM_Server.exe: CMakeFiles\LM_Server.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\marek\Desktop\LM-server\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable LM_Server.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\marek\Desktop\LM-server\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable LM_Server.exe"
 	"C:\Program Files\JetBrains\CLion 2023.2.2\bin\cmake\win\x64\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\LM_Server.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100220~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100220~1.0\x64\mt.exe --manifests -- C:\PROGRA~1\MIB055~1\2022\COMMUN~1\VC\Tools\MSVC\1436~1.325\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\LM_Server.dir\objects1.rsp @<<
  /out:LM_Server.exe /implib:LM_Server.lib /pdb:C:\Users\marek\Desktop\LM-server\cmake-build-debug\LM_Server.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:console  pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

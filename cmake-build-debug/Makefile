@@ -142,6 +142,30 @@ LM_logika\Mravec.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\LM_Server.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\LM_Server.dir\LM_logika\Mravec.c.s
 .PHONY : LM_logika\Mravec.c.s
 
+LM_logika\Plocha.obj: LM_logika\Plocha.c.obj
+.PHONY : LM_logika\Plocha.obj
+
+# target to build an object file
+LM_logika\Plocha.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\LM_Server.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.obj
+.PHONY : LM_logika\Plocha.c.obj
+
+LM_logika\Plocha.i: LM_logika\Plocha.c.i
+.PHONY : LM_logika\Plocha.i
+
+# target to preprocess a source file
+LM_logika\Plocha.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\LM_Server.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.i
+.PHONY : LM_logika\Plocha.c.i
+
+LM_logika\Plocha.s: LM_logika\Plocha.c.s
+.PHONY : LM_logika\Plocha.s
+
+# target to generate assembly for a file
+LM_logika\Plocha.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\LM_Server.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\LM_Server.dir\LM_logika\Plocha.c.s
+.PHONY : LM_logika\Plocha.c.s
+
 LM_logika\Pole.obj: LM_logika\Pole.c.obj
 .PHONY : LM_logika\Pole.obj
 
@@ -274,6 +298,9 @@ help:
 	@echo ... LM_logika/Mravec.obj
 	@echo ... LM_logika/Mravec.i
 	@echo ... LM_logika/Mravec.s
+	@echo ... LM_logika/Plocha.obj
+	@echo ... LM_logika/Plocha.i
+	@echo ... LM_logika/Plocha.s
 	@echo ... LM_logika/Pole.obj
 	@echo ... LM_logika/Pole.i
 	@echo ... LM_logika/Pole.s

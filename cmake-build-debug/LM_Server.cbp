@@ -96,6 +96,12 @@
 		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Mravec.h">
 			<Option target="LM_Server"/>
 		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Plocha.c">
+			<Option target="LM_Server"/>
+		</Unit>
+		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Plocha.h">
+			<Option target="LM_Server"/>
+		</Unit>
 		<Unit filename="C:/Users/marek/Desktop/LM-server/LM_logika/Pole.c">
 			<Option target="LM_Server"/>
 		</Unit>

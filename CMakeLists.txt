@@ -21,6 +21,8 @@ add_executable(
         LM_logika/Mravec.h
         LM_logika/Mravec.c
         LM_logika/Pole.h
-        LM_logika/Pole.c)
+        LM_logika/Pole.c
+        LM_logika/Plocha.h
+        LM_logika/Plocha.c)
 
 target_link_libraries(LM_Server pthread)

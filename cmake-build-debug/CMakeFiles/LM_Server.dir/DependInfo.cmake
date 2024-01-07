@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/marek/Desktop/LM-server/LM_logika/Mravec.c" "CMakeFiles/LM_Server.dir/LM_logika/Mravec.c.obj" "msvc" "CMakeFiles/LM_Server.dir/LM_logika/Mravec.c.obj.d"
+  "C:/Users/marek/Desktop/LM-server/LM_logika/Plocha.c" "CMakeFiles/LM_Server.dir/LM_logika/Plocha.c.obj" "msvc" "CMakeFiles/LM_Server.dir/LM_logika/Plocha.c.obj.d"
   "C:/Users/marek/Desktop/LM-server/LM_logika/Pole.c" "CMakeFiles/LM_Server.dir/LM_logika/Pole.c.obj" "msvc" "CMakeFiles/LM_Server.dir/LM_logika/Pole.c.obj.d"
   "C:/Users/marek/Desktop/LM-server/main.c" "CMakeFiles/LM_Server.dir/main.c.obj" "msvc" "CMakeFiles/LM_Server.dir/main.c.obj.d"
   "C:/Users/marek/Desktop/LM-server/pos_sockets/active_socket.c" "CMakeFiles/LM_Server.dir/pos_sockets/active_socket.c.obj" "msvc" "CMakeFiles/LM_Server.dir/pos_sockets/active_socket.c.obj.d"
