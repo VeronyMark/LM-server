@@ -168,6 +168,15 @@ void* consume(void* thread_data) {
     if (data->my_socket != NULL) {
         try_get_client_sprava(data->my_socket, &clientSprava);
         printf("SPRAVA: %s\n", clientSprava.znaky);
+
+        ///
+        char responseMessage[] = "koniec bejby response";
+        // Send the response back to the client
+        active_socket_write_data(data->my_socket, responseMessage);
+        // Optionally, you can send an end message if needed
+        active_socket_write_end_message(data->my_socket);
+
+
     }
     if (data->my_socket == NULL) {
         printf("koniec milý japonec");

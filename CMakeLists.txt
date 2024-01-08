@@ -5,10 +5,11 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 include_directories(pos_sockets)
+include_directories(LM_logika)
 
 
 add_executable(
-        LM_Server
+        LM_Server main.c
         pos_sockets/active_socket.c
         pos_sockets/active_socket.h
         pos_sockets/char_buffer.c
@@ -17,7 +18,8 @@ add_executable(
         pos_sockets/passive_socket.c
         pos_sockets/passive_socket.h
         buffer.h
-        main.c
+        LM_logika/Simulacia.c
+        LM_logika/Simulacia.h
         LM_logika/Mravec.h
         LM_logika/Mravec.c
         LM_logika/Pole.h
@@ -26,3 +28,7 @@ add_executable(
         LM_logika/Plocha.c)
 
 target_link_libraries(LM_Server pthread)
+
+
+
+

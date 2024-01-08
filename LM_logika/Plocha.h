@@ -1,26 +1,20 @@
+#ifndef LANGTONOVMRAVEC_PLOCHA_H
+#define LANGTONOVMRAVEC_PLOCHA_H
+
 #include "Pole.h"
 
-#ifndef LM_SERVER_PLOCHA_H
-#define LM_SERVER_PLOCHA_H
+struct Plocha {
+    long long sirka;
+    long long vyska;
+    struct Pole *plocha;
+};
 
-typedef struct {
-    int sirka;
-    int vyska;
-    Pole *plocha;
-} Plocha;
+void vytvorPlochuRandom(struct Plocha *plocha, long long sirkaNacitana, long long vyskaNacitana);
+void vytvorPlochuManual(struct Plocha *plocha);
+void inicializujPlochu(struct Plocha *plocha, int randomOrManualOrFile, long long sirkaNacitana, long long vyskaNacitana);
+void zrusPlochu(struct Plocha *plocha);
+void vypisPlochu(const struct Plocha *plocha);
+struct Pole getPoleOnIndex(const struct Plocha *plocha, int index);
+void zmenFarbaOnIndex(struct Plocha *plocha, int index);
 
-Plocha createPlocha();
-Plocha createPlochaWithSize(int sirka, int vyska);
-void vytvorPlochuRandom(Plocha *plocha);
-void vytvorPlochuManual(Plocha *plocha);
-void vytvorPlochuSubor(Plocha *plocha, const char *subor);
-int getSirka(const Plocha *plocha);
-void setSirka(Plocha *plocha, int sirka);
-int getVyska(const Plocha *plocha);
-void setVyska(Plocha *plocha, int vyska);
-int getVelkostPlochy(const Plocha *plocha);
-void vypisPlochu(const Plocha *plocha);
-Pole getPoleOnIndex(const Plocha *plocha, int index);
-void zmenFarbaOnIndex(Plocha *plocha, int index);
-
-#endif //LM_SERVER_PLOCHA_H
+#endif // LANGTONOVMRAVEC_PLOCHA_H

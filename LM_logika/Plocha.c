@@ -1,47 +1,38 @@
 #include "Plocha.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
-void vytvorPlochuRandom(Plocha *plocha) {
-    int sirkaNacitana, vyskaNacitana;
+void vytvorPlochuRandom(struct Plocha *plocha, long long sirkaNacitana, long long vyskaNacitana) {
+    /*  int sirkaNacitana, vyskaNacitana;
 
-    printf("Zadajte rozmery plochy ktora bude vygenerovana RANDOM: \n");
-    printf("Sirka: \n");
-    scanf("%d", &sirkaNacitana);
-    printf("Vyska: \n");
-    scanf("%d", &vyskaNacitana);
+      printf("Zadajte rozmery plochy ktora bude vygenerovana RANDOM:\n");
+      printf("Sirka: ");
+      scanf("%d", &sirkaNacitana);
+      printf("Vyska: ");
+      scanf("%d", &vyskaNacitana);
+  */
+    plocha->sirka = (0 < sirkaNacitana && sirkaNacitana < 50) ? sirkaNacitana : 50;
+    plocha->vyska = (0 < vyskaNacitana && vyskaNacitana < 50) ? vyskaNacitana : 50;
 
-    if (0 < sirkaNacitana && sirkaNacitana < 50) plocha->sirka = sirkaNacitana;
-    if (0 < vyskaNacitana && vyskaNacitana < 50) plocha->vyska = vyskaNacitana;
-
-    int pocetPoli = plocha->sirka * plocha->vyska;
-    plocha->plocha = (Pole *)malloc(pocetPoli * sizeof(Pole));
-
-    for (int i = 0; i < pocetPoli; i++) {
-        int cislo = rand() % 2;
-        initializePole(&plocha->plocha[i], cislo);
+    for (int i = 0; i < plocha->sirka * plocha->vyska; i++) {
+        initPole(&plocha->plocha[i], rand() % 2);
     }
 }
 
-void vytvorPlochuManual(Plocha *plocha) {
-    int sirkaNacitana, vyskaNacitana;
+void vytvorPlochuManual(struct Plocha *plocha) {
+    int i;
+    plocha->sirka = 50;
+    plocha->vyska = 50;
 
-    printf("Zadajte rozmery plochy ktora bude vygenerovana MANUALNE: \n");
-    printf("Sirka: \n");
-    scanf("%d", &sirkaNacitana);
-    printf("Vyska: \n");
-    scanf("%d", &vyskaNacitana);
+    plocha->plocha = (struct Pole *)malloc(plocha->sirka * plocha->vyska * sizeof(struct Pole));
 
-    if (0 < sirkaNacitana && sirkaNacitana < 50) plocha->sirka = sirkaNacitana;
-    if (0 < vyskaNacitana && vyskaNacitana < 50) plocha->vyska = vyskaNacitana;
+    if (plocha->plocha == NULL) {
+        fprintf(stderr, "Memory allocation failed MANUAL\n");
+        exit(EXIT_FAILURE);
+    }
 
-    int pocetPoli = plocha->sirka * plocha->vyska;
-    plocha->plocha = (Pole *)malloc(pocetPoli * sizeof(Pole));
-
-    for (int i = 0; i < pocetPoli; i++) {
-        int cislo = 0;
-        initializePole(&plocha->plocha[i], cislo);
+    for (i = 0; i < plocha->sirka * plocha->vyska; i++) {
+        initPole(&plocha->plocha[i], 0); // Initialize with 0 for simplicity
     }
 
     int stop, x, y;
@@ -49,97 +40,68 @@ void vytvorPlochuManual(Plocha *plocha) {
     while (1) {
         printf("Zadajte suradnice prvku ktory chcete nastavit na cierny:\n");
         printf("X: ");
-        scanf("%d", &x);
+        if (scanf("%d", &x) != 1) {
+            fprintf(stderr, "Invalid input for X\n");
+            exit(EXIT_FAILURE);
+        }
         printf("Y: ");
-        scanf("%d", &y);
+        if (scanf("%d", &y) != 1) {
+            fprintf(stderr, "Invalid input for Y\n");
+            exit(EXIT_FAILURE);
+        }
 
-        if (0 <= x && x < plocha->sirka && 0 <= y && y < plocha->vyska) zmenFarbaOnIndex(plocha, y * plocha->sirka + x);
+        if (0 <= x && x < plocha->sirka && 0 <= y && y < plocha->vyska) {
+            zmenFarba(&plocha->plocha[y * plocha->sirka + x]);
+        }
 
-        printf("Zadajte \n"
-               "0 - dalsie pole na cierne \n"
-               "1 - ukoncit zadavanie ciernych poli \n");
+        printf("Zadajte\n"
+               "0 - dalsie pole na cierne\n"
+               "1 - ukoncit zadavanie ciernych poli\n");
 
         scanf("%d", &stop);
 
-        if (stop == 1)
+        if (stop == 1) {
             break;
-
-        while (getchar() != '\n')
-            ; // clear input buffer
-    }
-}
-
-void vytvorPlochuSubor(Plocha *plocha, const char *subor) {
-    FILE *file = fopen(subor, "r");
-    if (!file) {
-        fprintf(stderr, "Chyba pri otvarani suboru!\n");
-        return;
-    }
-
-    fscanf(file, "%d %d", &plocha->sirka, &plocha->vyska);
-    int pocetPoli = plocha->sirka * plocha->vyska;
-
-    plocha->plocha = (Pole *)malloc(pocetPoli * sizeof(Pole));
-
-    for (int i = 0; i < plocha->vyska; ++i) {
-        for (int j = 0; j < plocha->sirka; ++j) {
-            int cislo;
-            fscanf(file, "%d", &cislo);
-            initializePole(&plocha->plocha[i * plocha->sirka + j], cislo);
         }
+
+        fflush(stdin);
     }
-    fclose(file);
 }
 
-Plocha createPlocha() {
-    Plocha plocha;
-    plocha.sirka = 0;
-    plocha.vyska = 0;
-    plocha.plocha = NULL;
-    return plocha;
-}
+void inicializujPlochu(struct Plocha *plocha, int randomOrManualOrFile,long long sirkaNacitana, long long vyskaNacitana) {
+    plocha->sirka = sirkaNacitana;
+    plocha->vyska = vyskaNacitana;
+    plocha->plocha = (struct Pole *)malloc(plocha->sirka * plocha->vyska * sizeof(struct Pole));
 
-Plocha createPlochaWithSize(int sirka, int vyska) {
-    Plocha plocha;
-    plocha.sirka = sirka;
-    plocha.vyska = vyska;
-    int pocetPoli = plocha.sirka * plocha.vyska;
-    plocha.plocha = (Pole *)malloc(pocetPoli * sizeof(Pole));
-    for (int i = 0; i < pocetPoli; i++) {
-        initializePole(&plocha.plocha[i], 0);
+    //plocha->plocha = (struct Pole *)malloc(plocha->sirka * plocha->vyska * sizeof(struct Pole));
+
+    if (plocha->plocha == NULL) {
+        fprintf(stderr, "Memory allocation failed INICIALIZACIA\n");
+        exit(EXIT_FAILURE);
     }
-    return plocha;
+
+    if (randomOrManualOrFile == 0) {
+        vytvorPlochuRandom(plocha, sirkaNacitana, vyskaNacitana);
+    } else if (randomOrManualOrFile == 1) {
+        vytvorPlochuManual(plocha);
+    }
 }
 
-int getSirka(const Plocha *plocha) {
-    return plocha->sirka;
+void zrusPlochu(struct Plocha *plocha) {
+    free(plocha->plocha);
+    plocha->plocha = NULL;
 }
 
-void setSirka(Plocha *plocha, int sirka) {
-    plocha->sirka = sirka;
-}
+void vypisPlochu(const struct Plocha *plocha) {
+    int i;
 
-int getVyska(const Plocha *plocha) {
-    return plocha->vyska;
-}
-
-void setVyska(Plocha *plocha, int vyska) {
-    plocha->vyska = vyska;
-}
-
-int getVelkostPlochy(const Plocha *plocha) {
-    return plocha->sirka * plocha->vyska;
-}
-
-void vypisPlochu(const Plocha *plocha) {
     printf("\n");
-    for (int i = 0; i < (plocha->sirka * 2) - 1; i++) {
+    for (i = 0; i < (plocha->sirka * 2) - 1; i++) {
         printf("-");
     }
     printf("\n");
 
-    int pocetPoli = plocha->sirka * plocha->vyska;
-    for (int i = 0; i < pocetPoli; i++) {
+    for (i = 0; i < plocha->sirka * plocha->vyska; i++) {
         if (i > 0 && i % plocha->sirka == 0) {
             printf("\n");
         }
@@ -152,23 +114,15 @@ void vypisPlochu(const Plocha *plocha) {
     }
 
     printf("\n");
-    for (int i = 0; i < (plocha->sirka * 2) - 1; i++) {
+    for (i = 0; i < (plocha->sirka * 2) - 1; i++) {
         printf("-");
     }
 }
 
-Pole getPoleOnIndex(const Plocha *plocha, int index) {
-    if (index < getVelkostPlochy(plocha)) {
-        return plocha->plocha[index];
-    } else {
-        Pole pole;
-        initializePole(&pole, 0);
-        return pole;
-    }
+struct Pole getPoleOnIndex(const struct Plocha *plocha, int index) {
+    return plocha->plocha[index];
 }
 
-void zmenFarbaOnIndex(Plocha *plocha, int index) {
-    if (index < getVelkostPlochy(plocha)) {
-        zmenFarbaOnIndex(&plocha->plocha[index], index);
-    }
+void zmenFarbaOnIndex(struct Plocha *plocha, int index) {
+    zmenFarba(&plocha->plocha[index]);
 }
