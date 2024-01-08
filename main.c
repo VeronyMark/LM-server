@@ -7,24 +7,48 @@
 #include "pos_sockets/char_buffer.h"
 #include "pos_sockets/active_socket.h"
 #include "pos_sockets/passive_socket.h"
+#include "Simulacia.h"
 
 typedef struct sprava {
-    char* znaky;
     long long row;
     long long column;
     long long numberAnts;
+    long long numberSteps;
     long long type;
+    long long logic;
+    long long solutions;
 } SPRAVA;
 
 
 ;
 
+typedef struct SimulaciaC SimulaciaC;
+
 _Bool try_deserializate(struct sprava* pi_estimation, struct char_buffer* buf) {
     //ocakavam ze to takto pride
 
-    if (sscanf(buf->data, "%s;%lld;%lld;%lld;%lld", pi_estimation->znaky,
-               &pi_estimation->row, &pi_estimation->column,
-               &pi_estimation->numberAnts, &pi_estimation->type) == 5) {
+    if (sscanf(buf->data, "%lld;%lld;%lld;%lld;%lld;%lld;%lld",
+               &pi_estimation->row,
+               &pi_estimation->column,
+               &pi_estimation->numberAnts,
+               &pi_estimation->numberSteps,
+               &pi_estimation->type,
+               &pi_estimation->logic,
+               &pi_estimation->solutions) == 7) {
+        /* printf("ROW %lld \n", pi_estimation->row);
+         printf("COLUMN %lld\n", pi_estimation->column);
+
+         printf("ANTS %lld\n", pi_estimation->numberAnts);
+
+         printf("numberSteps %lld\n", pi_estimation->numberSteps);
+
+         printf("type %lld\n", pi_estimation->type);
+         printf("logic %lld\n", pi_estimation->logic);
+         printf("solutions %lld\n", pi_estimation->solutions);
+ */
+        struct Simulacia s;
+        simuluj(&s,  pi_estimation->row,  pi_estimation->column,  pi_estimation->numberAnts,  pi_estimation->numberSteps,  pi_estimation->type,  pi_estimation->logic,  pi_estimation->solutions);
+
         return true;
     }
 
@@ -84,7 +108,7 @@ void* process_client_data(void* thread_data) {
     PASSIVE_SOCKET  sock;
     passive_socket_init(&sock);
 
-    printf("VZNIKA SOCKEt");
+    //   printf("VZNIKA SOCKEt");
     //     vznikol aktivny socket                                     pocuva na tomto porte
     passive_socket_start_listening(&sock, data->port);
     //kvazi zablokovane kym sa nejaky klient nepripoji
@@ -95,17 +119,21 @@ void* process_client_data(void* thread_data) {
     //ak by som chcel 3 klientov -> 3krat volam wait_for_client
 
     // while passive_socket_is_listening() --> mozne pouzitie
-    printf("zacina pocuvat");
+    // printf("zacina pocuvat");
 
     passive_socket_stop_listening(&sock);
-    printf("prestava pocuvat");
+    // printf("prestava pocuvat");
+    active_socket_start_reading(data->my_socket);
+
     passive_socket_destroy(&sock);
 
 
     //v tomto vlakne prebieha citanie dat -> spracovava
     //bezi to "donekonecna"
-    active_socket_start_reading(data->my_socket);
 
+    //*
+
+    //*
     return NULL;
 }
 
@@ -138,7 +166,7 @@ _Bool try_get_client_sprava(struct active_socket* my_sock, struct sprava* client
     //ak vrati false nemam tam ziadnu spravu -> nic neurobim
     if(active_socket_try_get_read_data(my_sock,&buf)) {
         //printf(buf.data);
-        printf(&buf);
+        // printf(&buf);
         //deserializacia retazec na formu ktr treba
         //ak uspesne tak sa ulozi ak neuspesne kontrola ci to nebola koncova sprva
         if(!try_deserializate(client_pi_estimaton, &buf)) {
@@ -153,6 +181,11 @@ _Bool try_get_client_sprava(struct active_socket* my_sock, struct sprava* client
             result = true;
         }
     }
+
+
+    ///TODO
+    active_socket_write_data(&my_sock,"end");
+
     char_buffer_destroy(&buf);
     return result;
 }
@@ -167,26 +200,21 @@ void* consume(void* thread_data) {
 
     if (data->my_socket != NULL) {
         try_get_client_sprava(data->my_socket, &clientSprava);
-        printf("SPRAVA: %s\n", clientSprava.znaky);
-
+        printf("UKONCUJEME");
         ///
         char responseMessage[] = "koniec bejby response";
-        // Send the response back to the client
-        active_socket_write_data(data->my_socket, responseMessage);
-        // Optionally, you can send an end message if needed
-        active_socket_write_end_message(data->my_socket);
 
-
+        //active_socket_write_data(data->my_socket, responseMessage);
+        //active_socket_write_end_message(data->my_socket);
     }
     if (data->my_socket == NULL) {
-        printf("koniec milý japonec");
+        // active_socket_write_data(data->my_socket,"koniec bejby" );
     }
-
     return NULL;
 }
 
 int main(int argc, char* argv[]) {
-    // pthread_t th_produce;
+    //  pthread_t th_produce;
     pthread_t th_receive;
 
     struct thread_data data;
@@ -197,10 +225,10 @@ int main(int argc, char* argv[]) {
     active_socket_init(&my_socket);
 
     // do thread data pribudne parameter -> aktivny socker
-    thread_data_init(&data, 10, 13333, &my_socket);
+    thread_data_init(&data, 7, 14000, &my_socket);
 
     //nastartujem vlakna -> 1)producent
-    // pthread_create(&th_produce, NULL, consume, &data);
+    //  pthread_create(&th_produce, NULL, consume, &data);
 
     //na zisk dat z klientskej strany -> speci proces client_data  citanie dat zo soketu
     pthread_create(&th_receive, NULL, process_client_data, &data);
@@ -210,7 +238,7 @@ int main(int argc, char* argv[]) {
     pthread_join(th_receive, NULL);
 
     consume(&data);
-
+//send
 
     //join vlakien
 
